@@ -1,0 +1,30 @@
+.flash-message {
+    position: fixed;
+    top: 20px;
+    z-index: 9999;
+    width: 300px;
+    padding: 20px;
+    border-radius: 5px;
+    color: #fff;
+    font-size: 14px;
+    font-weight: 500;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+    transition: all 0.3s ease-in-out;
+
+
+    &--left {
+        left: 20px;
+    }
+
+    &--right {
+        right: 20px;
+    }
+
+    &--success {
+        background: #0cad4f;
+    }
+
+    &--error {
+        background: #e74c3c;
+    }
+}
