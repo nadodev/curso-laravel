@@ -14,9 +14,11 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/',  [ClientController::class, 'index'])->name('clients.index');
-Route::get('clientes/create',  [ClientController::class, 'create'])->name('clients.create');
-Route::put('clientes/{id}',  [ClientController::class, 'update'])->name('clients.update');
-Route::delete('clientes/{id}/delete',  [ClientController::class, 'destroy'])->name('clients.delete');
-Route::post('clientes/create',  [ClientController::class, 'store'])->name('clients.store');
-Route::get('clientes/{id}/edit',  [ClientController::class, 'edit'])->name('clients.edit');
+Route::resource('clients', ClientController::class);
+
+// Route::get('/',  [ClientController::class, 'index'])->name('clients.index');
+// Route::get('clientes/create',  [ClientController::class, 'create'])->name('clients.create');
+// Route::put('clientes/{id}',  [ClientController::class, 'update'])->name('clients.update');
+// Route::delete('clientes/{id}/delete',  [ClientController::class, 'destroy'])->name('clients.delete');
+// Route::post('clientes/create',  [ClientController::class, 'store'])->name('clients.store');
+// Route::get('clientes/{id}/edit',  [ClientController::class, 'edit'])->name('clients.edit');

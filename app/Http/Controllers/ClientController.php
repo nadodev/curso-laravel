@@ -87,7 +87,7 @@ class ClientController extends Controller
             return redirect()->back();
         }
 
-        return view('clients.editar', compact('client'));
+        return view('clients.edit', compact('client'));
     }
 
     /**
@@ -105,7 +105,7 @@ class ClientController extends Controller
 
         session()->flash('success', 'Registro Editado com sucesso.');
 
-        return redirect()->route('clients.edit', ['id' => $client->id]);
+        return redirect()->route('clients.index');
 
     }
 

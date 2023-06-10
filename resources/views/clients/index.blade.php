@@ -27,7 +27,7 @@
             <button>
                 <a href="{{ route('clients.edit', $client)}}">Atualizar</a>
             </button>
-                <form action="{{ route('clients.delete', $client->id) }}" method="POST">
+                <form action="{{ route('clients.destroy', $client->id) }}" method="POST">
                     @csrf
                     @method('DELETE')
                     <button class="red" type="submit">Excluir</button>
