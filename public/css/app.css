@@ -1,0 +1,17 @@
+.lista__wrapper {
+    margin-bottom: 2rem;
+}
+
+.lista li {
+    list-style: none;
+    margin-bottom: 0.7rem;
+}
+
+.lista li a {
+    display: block;
+    padding: 10px 15px;
+    background-color: #f4f4f4;
+    border-bottom: 1px solid #ccc;
+    color: #333;
+    text-decoration: none;
+}
