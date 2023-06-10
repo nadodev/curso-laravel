@@ -4,23 +4,45 @@ namespace App\Http\Controllers;
 
 use App\Http\Requests\ClientRequest;
 use App\Models\Client;
+use Illuminate\Http\RedirectResponse;
+use Illuminate\View\View;
+
 
 class ClientController extends Controller
 {
     public function __construct(private Client $client, ){}
 
-    public function index(Client $client)
+    /**
+     * Method index - Lista todos os registros
+     *
+     * @param Client $client
+     *
+     * @return View
+     */
+    public function index(Client $client) : View
     {
         $clients = $client->all();
         return view('clients.index',  compact('clients'));
     }
 
-    public function create()
+    /**
+     * Method create - Retorna a view de criação
+     *
+     * @return View
+     */
+    public function create() : View
     {
         return view('clients.create');
     }
 
-    public function store(ClientRequest $request)
+    /**
+     * Method store - Salva o registro
+     *
+     * @param ClientRequest $request [explicite description]
+     *
+     * @return RedirectResponse
+     */
+    public function store(ClientRequest $request) : RedirectResponse
     {
         $data = $request->except('_token');
         $this->client->create($data);
@@ -31,7 +53,14 @@ class ClientController extends Controller
         return redirect()->route('clients.index');
     }
 
-    public function show(int $id)
+    /**
+     * Method show - Mostra o registro selecionado pelo id
+     *
+     * @param int $id
+     *
+     * @return View
+     */
+    public function show(int $id) : View
     {
         if(!$client = $this->client->find($id))
         {
@@ -42,7 +71,15 @@ class ClientController extends Controller
     }
 
 
-    public function edit(int $id){
+    /**
+     * Method edit - Retorna a view de edição
+     *
+     * @param int $id
+     *
+     * @return View
+     */
+    public function edit(int $id) : View
+    {
 
         $client = $this->client->find($id);
         if(!$client)
@@ -53,7 +90,15 @@ class ClientController extends Controller
         return view('clients.editar', compact('client'));
     }
 
-    public function update(ClientRequest $request, int $id)
+    /**
+     * Method update - Atualiza o registro selecionado pelo id
+     *
+     * @param ClientRequest $request
+     * @param int $id
+     *
+     * @return RedirectResponse
+     */
+    public function update(ClientRequest $request, int $id) : RedirectResponse
     {
         $client = $this->client->find($id);
         $client->update($request->except('_token'));
@@ -64,15 +109,20 @@ class ClientController extends Controller
 
     }
 
-    public function destroy(int $id)
+    /**
+     * Method destroy - Exclui o registro selecionado pelo id
+     *
+     * @param int $id
+     *
+     * @return RedirectResponse
+     */
+    public function destroy(int $id) : RedirectResponse
     {
-
         $client = $this->client->find($id);
         $client->delete();
 
         session()->flash('success', 'Registro Excluido com sucesso.');
 
         return redirect()->route('clients.index');
-
     }
 }
